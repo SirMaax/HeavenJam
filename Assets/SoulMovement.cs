@@ -98,6 +98,11 @@ public class SoulMovement : MonoBehaviour
                 nextRandomTarget = Vector2.zero;
                 StartCoroutine(CooldownMoveRandomly());
             }
+            else if (direction.magnitude > 10f)
+            {
+                nextRandomTarget = Vector2.zero;
+                StartCoroutine(CooldownMoveRandomly());
+            }
             else
             {
             direction = direction.normalized;
