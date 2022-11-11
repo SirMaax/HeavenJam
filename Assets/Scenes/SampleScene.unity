@@ -156,9 +156,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &12630350
 SpriteRenderer:
@@ -297,9 +300,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &52280837
 SpriteRenderer:
@@ -571,7 +577,6 @@ MonoBehaviour:
   selected: 0
   canMove: 0
   moving: 0
-  camera: {fileID: 519420031}
   floor:
     serializedVersion: 2
     m_Bits: 64
@@ -696,7 +701,6 @@ MonoBehaviour:
   selected: 0
   canMove: 0
   moving: 0
-  camera: {fileID: 519420031}
   floor:
     serializedVersion: 2
     m_Bits: 64
@@ -912,9 +916,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &208358519
 SpriteRenderer:
@@ -1053,9 +1060,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &209842496
 SpriteRenderer:
@@ -1278,9 +1288,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &540310262
 SpriteRenderer:
@@ -1419,9 +1432,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &591361999
 SpriteRenderer:
@@ -1607,9 +1623,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &1478756757
 SpriteRenderer:
@@ -1748,9 +1767,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &1531194299
 SpriteRenderer:
@@ -1889,9 +1911,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &1944409411
 SpriteRenderer:
@@ -2141,9 +2166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &1986697386
 SpriteRenderer:
@@ -2283,6 +2311,9 @@ MonoBehaviour:
   timeBetweenRandomMovementMin: 0
   timeBetweenRandomMovementMax: 0
   movementSpeed: 1
+  maxSpeedMulitplier: 0
+  xRandomMovement: 0
+  yRandomMovement: 0
   percentageOfBaseMovementSpeedMultiplier: 0
 --- !u!212 &2031651275
 SpriteRenderer:
@@ -2429,9 +2460,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRangeFromDog: 0
-  timeBetweenRandomMovementMin: 0
-  timeBetweenRandomMovementMax: 0
+  timeBetweenRandomMovementMin: 1
+  timeBetweenRandomMovementMax: 3
   movementSpeed: 1
+  maxSpeedMulitplier: 250
+  xRandomMovement: 5
+  yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10
 --- !u!212 &2057920952
 SpriteRenderer:

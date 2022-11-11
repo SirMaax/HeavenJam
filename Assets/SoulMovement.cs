@@ -64,6 +64,7 @@ public class SoulMovement : MonoBehaviour
             int runsThroughLoop = 0;
             do
             {
+                newPointIsInDogRadius = false;
                 float newX = Random.Range(currentPos.x - xRandomMovement, currentPos.x + xRandomMovement);
                 float newY = Random.Range(currentPos.y - yRandomMovement, currentPos.y + yRandomMovement);
                 nextRandomTarget = new Vector2(newX, newY);
@@ -78,7 +79,8 @@ public class SoulMovement : MonoBehaviour
                 }
 
                 runsThroughLoop++;
-            } while (newPointIsInDogRadius || runsThroughLoop < 100);
+                if (runsThroughLoop >= 50) return;
+            } while (newPointIsInDogRadius);
             
             
             
