@@ -13,7 +13,7 @@ public class MoveScript : MonoBehaviour
     public bool canMove;
     public bool moving;
     private Queue<Vector2> targetPosition;
-    private LineRenderer lr;
+     LineRenderer lr;
 
     [Header("Refs")] // Start is called before the first frame update
     [SerializeField] private LayerMask floor;
@@ -42,7 +42,6 @@ public class MoveScript : MonoBehaviour
         {
             selected = true;
             _selectManager.NewSelectedObject(this);
-            print("selected");
         }
     }
 

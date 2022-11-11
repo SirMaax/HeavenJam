@@ -13,6 +13,8 @@ public class SoulMovement : MonoBehaviour
     public bool isInRangeFromDog;
     [SerializeField] float timeBetweenRandomMovementMin;
     [SerializeField] float timeBetweenRandomMovementMax;
+    public bool isInRangeForBarking;
+    private Vector2 barkingDogPosition;
     private bool canMoveRandomly;
     
     [Header("Movement")]
@@ -38,6 +40,7 @@ public class SoulMovement : MonoBehaviour
         _dogManager = GameObject.FindGameObjectWithTag("DogManager").GetComponent<DogManager>();
         smallestDistanceToDog = Mathf.Infinity;
         canMoveRandomly = true;
+        
     }
 
     // Update is called once per frame
@@ -51,7 +54,7 @@ public class SoulMovement : MonoBehaviour
 
     private void SetNewRandomTarget()
     {
-        if (!isInRangeFromDog && canMoveRandomly)
+        if (!isInRangeFromDog && !isInRangeForBarking &&canMoveRandomly)
         {
             //Moverandomly
             canMoveRandomly = false;
@@ -89,7 +92,7 @@ public class SoulMovement : MonoBehaviour
 
     private void MoveRandomly()
     {
-        if (!isInRangeFromDog && nextRandomTarget != Vector2.zero)
+        if (!isInRangeFromDog && !isInRangeForBarking &&nextRandomTarget != Vector2.zero)
         {
             Vector2 direction = nextRandomTarget -(Vector2) transform.position;
             if (direction.magnitude < 0.1f)
@@ -159,7 +162,7 @@ public class SoulMovement : MonoBehaviour
     private void Move()
     {
         Debug.DrawLine(transform.position,fleeDirection +(Vector2) transform.position,Color.cyan);
-        if (isInRangeFromDog)
+        if (isInRangeFromDog && !isInRangeForBarking)
         {
             fleeDirection = fleeDirection.normalized;
             
@@ -167,9 +170,22 @@ public class SoulMovement : MonoBehaviour
             fleeDirection *= movementSpeed * extraSpeedPercentage * Time.deltaTime;
             transform.Translate(fleeDirection);
         }
+        else if(isInRangeForBarking)
+        {
+            Vector2 direction = (Vector2)transform.position - barkingDogPosition;
+            direction = direction.normalized;
+            float extraSpeedPercentage = ((maxSpeedMulitplier-100)/-5 + maxSpeedMulitplier)/100;
+            direction *= movementSpeed * extraSpeedPercentage * Time.deltaTime;
+            transform.Translate(direction);
+            isInRangeForBarking = false;
+        }
+        
     }
 
-    public void IsInBarkingRange(Vector3 DogPosition)
+    public void IsInBarkingRange(Vector3 dogPosition)
     {
+        isInRangeForBarking = true;
+        barkingDogPosition = dogPosition;
     }
+
 }
