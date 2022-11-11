@@ -168,4 +168,8 @@ public class SoulMovement : MonoBehaviour
             transform.Translate(fleeDirection);
         }
     }
+
+    public void IsInBarkingRange(Vector3 DogPosition)
+    {
+    }
 }

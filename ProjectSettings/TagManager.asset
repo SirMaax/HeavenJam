@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SelectManager
   - DogManager
+  - Soul
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Floor
   - GameObjects
-  - 
+  - Souls
   - 
   - 
   - 
@@ -46,11 +47,17 @@ TagManager:
   - name: Floor
     uniqueID: 1077180771
     locked: 0
+  - name: HolesInGround
+    uniqueID: 3979959327
+    locked: 0
   - name: RangeCircle
     uniqueID: 2389754359
     locked: 0
   - name: Souls
     uniqueID: 3138068463
+    locked: 0
+  - name: Structures
+    uniqueID: 4037685665
     locked: 0
   - name: Dog
     uniqueID: 3174424661

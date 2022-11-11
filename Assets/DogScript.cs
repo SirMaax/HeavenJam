@@ -1,14 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DogScript : MonoBehaviour
 {
     [SerializeField] public float dogRadius;
+
+    [Header("RaysDectection")] [SerializeField]
+    private LayerMask soulMask;
+    [SerializeField] private float rayCastDistance;
+    [SerializeField] private float angleStep;
+    [SerializeField] private int amountOfRays;
     
+    
+    
+    private Vector2 direction;
+    private Vector2 lastFramePosition;
     // Start is called before the first frame update
     private LineRenderer lr;
+    
 
     void Start()
     {
@@ -20,6 +32,9 @@ public class DogScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        direction = (Vector2)transform.position - lastFramePosition;
+        lastFramePosition = transform.position;
+        Test();
     }
 
     public Vector2 GetPosition()
@@ -53,4 +68,42 @@ public class DogScript : MonoBehaviour
     //     lr.widthCurve = AnimationCurve.Constant(1, 1, .2f);
     //     DisplayRange();
     // }
+
+    private void Test()
+    {
+        for (int i = 0; i < amountOfRays; i++)
+        {
+            // Quaternion angle = Quaternion.AngleAxis(angleStep * i,Vector3.up);
+            
+            Vector2 newDir = Rotate(direction,i * angleStep);
+            Vector2 newDir2 = Rotate(direction,i * -angleStep);
+            RaycastHit2D[] hit1 = Physics2D.RaycastAll(transform.position, newDir,
+                rayCastDistance, soulMask); 
+            foreach (var contact in hit1)
+            {
+                contact.collider.GetComponent<SoulMovement>().IsInBarkingRange(transform.position);
+            }
+            hit1 = Physics2D.RaycastAll(transform.position, newDir2, rayCastDistance, soulMask);
+            
+            foreach (var contact in hit1)
+            {
+                contact.collider.GetComponent<SoulMovement>().IsInBarkingRange(transform.position);
+            }
+            Debug.DrawRay(transform.position,newDir.normalized * rayCastDistance, Color.green);
+            Debug.DrawRay(transform.position,newDir2.normalized * rayCastDistance, Color.magenta);
+
+        }
+
+    }
+    
+    public Vector2 Rotate(Vector2 v, float degrees) {
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+         
+        float tx = v.x;
+        float ty = v.y;
+        v.x = (cos * tx) - (sin * ty);
+        v.y = (sin * tx) + (cos * ty);
+        return v;
+    }
 }
