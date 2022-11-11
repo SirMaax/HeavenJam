@@ -13,7 +13,7 @@ public class DogScript : MonoBehaviour
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-        lr.SetVertexCount (50 + 1);
+        lr.positionCount = (50 + 1);
         lr.useWorldSpace = false;
         lr.loop = true; lr.widthCurve = AnimationCurve.Constant(1,1,.2f);
         DisplayRange();
@@ -34,7 +34,6 @@ public class DogScript : MonoBehaviour
     {
         float x;
         float y;
-        float z;
 
         float angle = 20f;
         int segments = 50;

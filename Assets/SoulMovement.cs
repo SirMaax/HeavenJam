@@ -1,23 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.UIElements;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoulMovement : MonoBehaviour
 {
     [Header("Status")] 
     public bool isInRangeFromDog;
-    [SerializeField] private float movementSpeed;
     [SerializeField] float timeBetweenRandomMovementMin;
     [SerializeField] float timeBetweenRandomMovementMax;
     private bool canMoveRandomly;
+    
+    [Header("Movement")]
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float maxSpeedMulitplier;
+
+    [Header("RandomMovenetn")] private Vector2 nextRandomTarget;
+    [SerializeField] private float xRandomMovement;
+    [SerializeField] private float yRandomMovement;
+    
+    [Tooltip("Speed = random between Basespeed minus and plus 1/10 of Basespeed")]
+    [SerializeField] private float percentageOfBaseMovementSpeedMultiplier;
     private Vector2 fleeDirection;
+
+    private float smallestDistanceToDog;
     // Start is called before the first frame update
 
     [Header("Refs")] private DogManager _dogManager;
     void Start()
     {
+        movementSpeed = Random.Range(movementSpeed - (movementSpeed / percentageOfBaseMovementSpeedMultiplier)
+            , movementSpeed + (movementSpeed / percentageOfBaseMovementSpeedMultiplier));
         _dogManager = GameObject.FindGameObjectWithTag("DogManager").GetComponent<DogManager>();
+        smallestDistanceToDog = Mathf.Infinity;
+        canMoveRandomly = true;
     }
 
     // Update is called once per frame
@@ -25,9 +45,11 @@ public class SoulMovement : MonoBehaviour
     {
         FleeFromDogs();
         Move();
+        MoveRandomly();
+        SetNewRandomTarget();
     }
 
-    private void RandomMovement()
+    private void SetNewRandomTarget()
     {
         if (!isInRangeFromDog && canMoveRandomly)
         {
@@ -35,11 +57,57 @@ public class SoulMovement : MonoBehaviour
             canMoveRandomly = false;
             
             //Get new Target for walking
+            Vector2 currentPos = transform.position;
+            
+            DogScript[] dogs = _dogManager.GetAllDogs();
+            bool newPointIsInDogRadius = false;
+            int runsThroughLoop = 0;
+            do
+            {
+                float newX = Random.Range(currentPos.x - xRandomMovement, currentPos.x + xRandomMovement);
+                float newY = Random.Range(currentPos.y - yRandomMovement, currentPos.y + yRandomMovement);
+                nextRandomTarget = new Vector2(newX, newY);
+
+                foreach (var dog in dogs)
+                {
+                    if ((nextRandomTarget - dog.GetPosition()).magnitude < dog.dogRadius)
+                    {
+                        newPointIsInDogRadius = true;
+                        break;
+                    }
+                }
+
+                runsThroughLoop++;
+            } while (newPointIsInDogRadius || runsThroughLoop < 100);
+            
+            
+            
+        }
+    }
+
+    private void MoveRandomly()
+    {
+        if (!isInRangeFromDog && nextRandomTarget != Vector2.zero)
+        {
+            Vector2 direction = nextRandomTarget -(Vector2) transform.position;
+            if (direction.magnitude < 0.1f)
+            {
+                transform.position = nextRandomTarget;
+                nextRandomTarget = Vector2.zero;
+                StartCoroutine(CooldownMoveRandomly());
+            }
+            else
+            {
+            direction = direction.normalized;
+            direction *= movementSpeed/2 * Time.deltaTime;
+            transform.Translate(direction);
+            }
         }
     }
 
     private IEnumerator CooldownMoveRandomly()
     {
+        canMoveRandomly = false;
         float randomTime = Random.Range(timeBetweenRandomMovementMin, timeBetweenRandomMovementMax);
         yield return new WaitForSeconds(randomTime);
         canMoveRandomly = true;
@@ -48,25 +116,26 @@ public class SoulMovement : MonoBehaviour
     private void FleeFromDogs()
     {
         DogScript[] dogs = _dogManager.GetAllDogs();
-        ArrayList dogsInRadius = new ArrayList();
         Vector2 newDirection = Vector2.zero;
         Vector2 toCirlce = Vector2.zero;
+        smallestDistanceToDog = Mathf.Infinity;
         foreach (var dog in dogs)
         {
-            
-            if ((dog.GetPosition() - (Vector2)transform.position).magnitude < dog.dogRadius)
+            float distanceToDog = (dog.GetPosition() - (Vector2)transform.position).magnitude;
+            if (distanceToDog < smallestDistanceToDog) smallestDistanceToDog = distanceToDog;
+            if (distanceToDog < dog.dogRadius)
             {
-                // newDirection += (Vector2)transform.position - dog.GetPosition() ;
-                toCirlce = (((Vector2)transform.position - dog.GetPosition()).normalized) * (dog.dogRadius + dog.dogRadius/2) ;
-                // toCirlce = (((Vector2)transform.position - dog.GetPosition())) * dog.dogRadius;
-
-                Debug.DrawRay(dog.GetPosition(),toCirlce,Color.yellow);
-                // dogsInRadius.Add(dog.GetPosition());
+                toCirlce = (((Vector2)transform.position - dog.GetPosition()).normalized) * (dog.dogRadius) ;
                 newDirection += toCirlce;
             }
+            // else if (distanceToDog < dog.dogRadius + dog.dogRadius/3)
+            // {
+            //     toCirlce = (((Vector2)transform.position - dog.GetPosition()).normalized) * 
+            //                (Random.Range(dog.dogRadius/5,dog.dogRadius/2)) ;
+            //     newDirection += toCirlce;
+            // }
         
         }
-            Debug.DrawRay(transform.position, newDirection,Color.green);
         if (toCirlce != Vector2.zero)
         {
             isInRangeFromDog = true;
@@ -77,10 +146,7 @@ public class SoulMovement : MonoBehaviour
             isInRangeFromDog = false;
             fleeDirection = Vector2.zero;
         }
-        // if (dogsInRadius.Count != 0)
-        // {
-        //     
-        // }
+   
     }
 
     private void Move()
@@ -89,7 +155,9 @@ public class SoulMovement : MonoBehaviour
         if (isInRangeFromDog)
         {
             fleeDirection = fleeDirection.normalized;
-            fleeDirection *= movementSpeed * Time.deltaTime;
+            
+            float extraSpeedPercentage = ((maxSpeedMulitplier-100)/-5 * smallestDistanceToDog + maxSpeedMulitplier)/100;
+            fleeDirection *= movementSpeed * extraSpeedPercentage * Time.deltaTime;
             transform.Translate(fleeDirection);
         }
     }

@@ -12,7 +12,6 @@ public class MoveScript : MonoBehaviour
     private Vector2 targetPosition;
 
     [Header("Refs")] // Start is called before the first frame update
-    public Camera camera;
     [SerializeField] private LayerMask floor;
     private SelectManager _selectManager;
     void Start()
