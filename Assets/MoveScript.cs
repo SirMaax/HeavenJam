@@ -13,6 +13,7 @@ public class MoveScript : MonoBehaviour
     public static float XClampStatic;
     public static float YClampStatic;
     [Header("Status")] 
+    public bool onPatrol;
     public bool selected;
     public bool moving;
     private Queue<Vector2> targetPosition;
@@ -40,7 +41,6 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         direction = (Vector2)transform.position - lastPos;
         lastPos = transform.position;
         FlipSprite();
@@ -77,16 +77,29 @@ public class MoveScript : MonoBehaviour
     {
         if (moving)
         {
+            if (onPatrol && targetPosition.Count == 1)
+            {
+                return;
+            }
             //Check distance
             Vector2 direction = targetPosition.Peek() - (Vector2)transform.position;
             if (direction.magnitude < distanceTillSnapToTarget)
             {
-                transform.position = targetPosition.Peek();
-                targetPosition.Dequeue();
-                UpdatePositionsInLineRenderer();
-                if (targetPosition.Count == 0)
+                if (onPatrol)
                 {
-                moving = false;
+                    transform.position = targetPosition.Peek();
+                    targetPosition.Dequeue();
+                    targetPosition.Enqueue(transform.position);
+                }
+                else
+                {
+                    transform.position = targetPosition.Peek();
+                    targetPosition.Dequeue();
+                    UpdatePositionsInLineRenderer();
+                    if (targetPosition.Count == 0)
+                    {
+                        moving = false;
+                    }
                 }
             }
             else
@@ -110,8 +123,16 @@ public class MoveScript : MonoBehaviour
         selected = false;
     }
 
-    public void SetNewPosition(Vector2 newTargetPosition)
+    public void SetNewPosition(Vector2 newTargetPosition, bool _onPatrol = false)
     {
+        if (!_onPatrol)
+        {
+            if (onPatrol)
+            {
+                targetPosition.Clear();
+            }
+            onPatrol = false;
+        }
         moving = true;
         if (targetPosition.Count == 100) return;
         targetPosition.Enqueue(newTargetPosition);
@@ -125,23 +146,42 @@ public class MoveScript : MonoBehaviour
         SetNewPosition(newTargetPosition);
     }
 
+    public void SetNewPatrolPoint(Vector2 newTargetPosition)
+    {
+        if(!onPatrol)targetPosition.Clear();
+        lr.SetPositions(new Vector3[100]);
+        onPatrol = true;
+        SetNewPosition(newTargetPosition, true);
+    }
+    
     private void LineRendererUpdate()
     {
-        lr.SetPosition(0,transform.position);
-        if (selected)
+        if (!onPatrol)
         {
-            // lr.enabled = true;
+        lr.SetPosition(0,transform.position);
+        lr.loop = false;
         }
         else
         {
-            // lr.enabled = false;
+            lr.loop = true;
+        }
+        if (selected)
+        {
+            lr.enabled = true;
+        }
+        else
+        {
+            lr.enabled = false;
         }
     }
 
     private void UpdatePositionsInLineRenderer()
     {
-        Vector3[] tempArray = new Vector3[targetPosition.Count + 1];
-        int index = 1;
+        int extraCount = onPatrol ? 0 : 1;
+        Vector3[] tempArray = new Vector3[targetPosition.Count + extraCount];
+            
+        //If on partrol start index at 0
+        int index = onPatrol ? 0 : 1;
         tempArray[0] = transform.position;
         foreach (var ele in targetPosition)
         {
@@ -149,7 +189,7 @@ public class MoveScript : MonoBehaviour
             tempArray[index] = new Vector3(ele.x, ele.y, -1);
             index++;
         }
-        lr.positionCount = targetPosition.Count + 1;
+        lr.positionCount = targetPosition.Count + extraCount;
         lr.SetPositions(tempArray);
     }
 

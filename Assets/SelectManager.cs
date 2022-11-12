@@ -37,7 +37,15 @@ public class SelectManager : MonoBehaviour
         if (currentSelected != null && canSetPosition)
         {
             canSetPosition = true;
-            if (Mouse.current.rightButton.wasPressedThisFrame && Keyboard.current.shiftKey.isPressed)
+            if (Mouse.current.rightButton.wasPressedThisFrame && Keyboard.current.ctrlKey.isPressed)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit.collider != null)
+                {
+                    currentSelected.SetNewPatrolPoint(hit.point);
+                }
+            }
+            else if (Mouse.current.rightButton.wasPressedThisFrame && Keyboard.current.shiftKey.isPressed)
             {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                 if (hit.collider != null)

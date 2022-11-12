@@ -51,7 +51,7 @@ MonoBehaviour:
   amountOfClouds: 30
   spawnPositionX: 50
   spawnPositionY: 23.5
-  yRandom: 2.5
+  yRandom: 1.5
   baseCloudSpeed: 1
   maxTimeBetweenClouds: 0.5
   minTimeBetweenClouds: 3

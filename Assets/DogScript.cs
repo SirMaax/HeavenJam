@@ -9,7 +9,7 @@ public class DogScript : MonoBehaviour
     [Tooltip("0 is the normal dog, 1 is the mad dog. Important to set!")]
     [SerializeField] public int typeOfDog;
     [SerializeField] public float dogRadius;
-
+    [SerializeField] private bool showRadius; 
     [Header("RaysDectection")] [SerializeField]
     private LayerMask soulMask;
     [SerializeField] private float rayCastDistance;
@@ -26,7 +26,8 @@ public class DogScript : MonoBehaviour
 
     void Start()
     {
-        if(typeOfDog==0) LineRenderInit();
+        
+        if(typeOfDog==0 ) LineRenderInit();
         
     }
 
@@ -71,6 +72,7 @@ public class DogScript : MonoBehaviour
         lr2.loop = true;
         lr2.widthCurve = AnimationCurve.Constant(1, 1, .2f);
         DisplayRange();
+        if(!showRadius)lr2.gameObject.SetActive(false);
     }
 
     private void CastRays()
