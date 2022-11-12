@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class DogScript : MonoBehaviour
 {
+    [Tooltip("0 is the normal dog, 1 is the mad dog. Important to set!")]
+    [SerializeField] public int typeOfDog;
     [SerializeField] public float dogRadius;
 
     [Header("RaysDectection")] [SerializeField]
@@ -24,7 +26,7 @@ public class DogScript : MonoBehaviour
 
     void Start()
     {
-        LineRenderInit();
+        if(typeOfDog==0) LineRenderInit();
         
     }
 
@@ -33,9 +35,10 @@ public class DogScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (typeOfDog == 1) return;
         direction = (Vector2)transform.position - lastFramePosition;
         lastFramePosition = transform.position;
-        Test();
+        CastRays();
     }
 
     public Vector2 GetPosition()
@@ -70,7 +73,7 @@ public class DogScript : MonoBehaviour
         DisplayRange();
     }
 
-    private void Test()
+    private void CastRays()
     {
         for (int i = 0; i < amountOfRays; i++)
         {

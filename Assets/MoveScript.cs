@@ -8,9 +8,12 @@ public class MoveScript : MonoBehaviour
 {
     [Header("Variabl")] [SerializeField] private float movementSpeed;
     [SerializeField] private float distanceTillSnapToTarget;
+    [SerializeField] private float xClampValue;
+    [SerializeField] private float yClampValue;
+    public static float XClampStatic;
+    public static float YClampStatic;
     [Header("Status")] 
     public bool selected;
-    public bool canMove;
     public bool moving;
     private Queue<Vector2> targetPosition;
      LineRenderer lr;
@@ -27,6 +30,8 @@ public class MoveScript : MonoBehaviour
         lr.positionCount = 1;
         lr.useWorldSpace = true;
         lr.widthCurve = AnimationCurve.Constant(1, 1, .2f);
+        XClampStatic = xClampValue;
+        YClampStatic = yClampValue;
     }
 
     // Update is called once per frame
@@ -34,8 +39,18 @@ public class MoveScript : MonoBehaviour
     {
         MoveToPos();
         LineRendererUpdate();
+        ClampMovement();
     }
 
+    private void ClampMovement()
+    {
+        Vector2 currentPos = transform.position;
+        currentPos.x = Mathf.Clamp(currentPos.x, -xClampValue, xClampValue);
+        currentPos.y = Mathf.Clamp(currentPos.y, -yClampValue, yClampValue);
+        transform.position = new Vector3(currentPos.x, currentPos.y, -1);
+
+    }
+    
     private void OnMouseDown()
     {
         if (!selected)

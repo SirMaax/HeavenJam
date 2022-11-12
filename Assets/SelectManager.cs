@@ -63,5 +63,11 @@ public class SelectManager : MonoBehaviour
         canSetPosition = true;
     }
 
+    public void ClearSelection()
+    {
+        currentSelected.DeSelect();
+        currentSelected = null;
+    }
+
 } 
 
