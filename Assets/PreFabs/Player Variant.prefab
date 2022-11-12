@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_SortingLayerID
@@ -94,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 73626782046799334, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: movementSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 73626782046799334, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
+      propertyPath: activePortaitNumber
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799339, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: dogRadius

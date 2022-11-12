@@ -7,11 +7,12 @@ public class SelectManager : MonoBehaviour
 {
     [Header("Selcted")] private MoveScript currentSelected;
     [SerializeField] private float timeAfterBeingAbleToSelectPosition;
+
     [Header("Other Stuff")] private bool canSetPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -61,7 +62,6 @@ public class SelectManager : MonoBehaviour
                     currentSelected.SetNewPositionWithClear(hit.point);
                 }
             }
-
         }
     }
 
@@ -75,10 +75,8 @@ public class SelectManager : MonoBehaviour
     {
         if (currentSelected != null)
         {
-        currentSelected.DeSelect();
-        currentSelected = null;
+            currentSelected.DeSelect();
+            currentSelected = null;
         }
     }
-
-} 
-
+}

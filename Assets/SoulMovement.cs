@@ -46,6 +46,8 @@ public class SoulMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int random = Random.Range(0, 3);
+        // GetComponent<Animator>().
         FleeFromDogs();
         Move();
         MoveRandomly();

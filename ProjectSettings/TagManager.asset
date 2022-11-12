@@ -9,6 +9,7 @@ TagManager:
   - Soul
   - Dog
   - MadDog
+  - UI_Manager
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Floor
     uniqueID: 1077180771
+    locked: 0
+  - name: GroundClouds
+    uniqueID: 2665759243
     locked: 0
   - name: HolesInGround
     uniqueID: 3979959327

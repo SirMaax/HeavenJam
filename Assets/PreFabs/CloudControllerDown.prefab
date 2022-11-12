@@ -44,16 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e392715393e0e2240b1b29c7d2d435f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUpCloud: 0
+  allClouds: 0
+  reverseSpeed: 0
   prefabs:
   - {fileID: 5533372313767447324, guid: 4dd63e3b5a8a9ba47b5b67bda35454e7, type: 3}
   - {fileID: 2244057621510115413, guid: c99a35a4ab4e9794db08ba4c1290b10b, type: 3}
   - {fileID: 4791685499883221412, guid: 61858dd180a73fe40b773270c3f64e80, type: 3}
   amountOfClouds: 60
-  spawnPositionX: 50
-  spawnPositionY: -23.5
-  yRandom: 1.5
+  spawnPositionXLeft: -50
+  spawnPositionXRight: 50
+  spawnPositionYDown: -22
+  spawnPositionYUp: -26
+  yRandom: 0
   baseCloudSpeed: 1
   maxTimeBetweenClouds: 0.5
   minTimeBetweenClouds: 3
   minusScale: 4
   baseScale: 20
+  useTransformsForUpAndDown: 0
+  all: []

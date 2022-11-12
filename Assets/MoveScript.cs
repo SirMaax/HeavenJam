@@ -19,11 +19,15 @@ public class MoveScript : MonoBehaviour
     private Queue<Vector2> targetPosition;
      LineRenderer lr;
      private Animator _animator;
+
+     [Header("Portrait Stuff")] [SerializeField]
+     private int activePortaitNumber;
     [Header("Refs")] // Start is called before the first frame update
     [SerializeField] private LayerMask floor;
     private SelectManager _selectManager;
     private Vector2 direction;
     private Vector2 lastPos;
+    private UI_Manager _uiManager;
     void Start()
     {
         targetPosition = new Queue<Vector2>();
@@ -36,6 +40,7 @@ public class MoveScript : MonoBehaviour
         XClampStatic = xClampValue;
         YClampStatic = yClampValue;
         _animator = GetComponent<Animator>();
+        _uiManager = GameObject.FindWithTag("UI_Manager").GetComponent<UI_Manager>();
     }
 
     // Update is called once per frame
@@ -70,6 +75,7 @@ public class MoveScript : MonoBehaviour
         {
             selected = true;
             _selectManager.NewSelectedObject(this);
+            _uiManager.TogglePortrait(activePortaitNumber);
         }
     }
 
@@ -121,6 +127,7 @@ public class MoveScript : MonoBehaviour
     public void DeSelect()
     {
         selected = false;
+        _uiManager.TogglePortrait(activePortaitNumber);
     }
 
     public void SetNewPosition(Vector2 newTargetPosition, bool _onPatrol = false)

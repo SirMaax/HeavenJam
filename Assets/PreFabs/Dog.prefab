@@ -208,7 +208,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1120542635
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -497407180, guid: c7ef4d76ae294694994e019d02472c84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -237,8 +237,10 @@ MonoBehaviour:
   distanceTillSnapToTarget: 0.1
   xClampValue: 40
   yClampValue: 22.5
+  onPatrol: 0
   selected: 0
   moving: 0
+  activePortaitNumber: 2
   floor:
     serializedVersion: 2
     m_Bits: 64
@@ -272,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfDog: 0
   dogRadius: 5
+  showRadius: 0
   soulMask:
     serializedVersion: 2
     m_Bits: 256
