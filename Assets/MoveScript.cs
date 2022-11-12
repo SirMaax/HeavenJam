@@ -17,10 +17,12 @@ public class MoveScript : MonoBehaviour
     public bool moving;
     private Queue<Vector2> targetPosition;
      LineRenderer lr;
-
+     private Animator _animator;
     [Header("Refs")] // Start is called before the first frame update
     [SerializeField] private LayerMask floor;
     private SelectManager _selectManager;
+    private Vector2 direction;
+    private Vector2 lastPos;
     void Start()
     {
         targetPosition = new Queue<Vector2>();
@@ -32,11 +34,22 @@ public class MoveScript : MonoBehaviour
         lr.widthCurve = AnimationCurve.Constant(1, 1, .2f);
         XClampStatic = xClampValue;
         YClampStatic = yClampValue;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        direction = (Vector2)transform.position - lastPos;
+        lastPos = transform.position;
+        FlipSprite();
+        
+        if(moving)_animator.SetFloat("Speed", 1);
+        else
+        {
+            _animator.SetFloat("Speed", 0);
+        }
         MoveToPos();
         LineRendererUpdate();
         ClampMovement();
@@ -139,4 +152,23 @@ public class MoveScript : MonoBehaviour
         lr.positionCount = targetPosition.Count + 1;
         lr.SetPositions(tempArray);
     }
+
+    private void FlipSprite()
+    {
+        if (direction.x < 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * -1;
+            transform.localScale = scale;
+        }
+        else
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+        
+    }
+    
+    
 }

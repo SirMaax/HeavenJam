@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 73626782046799335}
   - component: {fileID: 73626782046799339}
   - component: {fileID: 73626782046799338}
+  - component: {fileID: -6231073277352964830}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Dog
@@ -161,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 73626782046799328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.21, y: 3.87, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 73626782021776186}
@@ -209,8 +210,8 @@ SpriteRenderer:
   m_SortingLayerID: -1120542635
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -497407180, guid: c7ef4d76ae294694994e019d02472c84, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd096a1679788343a4f7013cae48d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfDog: 0
   dogRadius: 5
   soulMask:
     serializedVersion: 2
@@ -376,3 +378,23 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!95 &-6231073277352964830
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73626782046799328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 629c57a9e406dec4e9e5b50ec1a22d8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

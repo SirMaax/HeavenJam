@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6231073277352964830, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f441d9acb6302254ba7661fd8000d347, type: 2}
     - target: {fileID: 73626782046799328, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799332, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799332, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799332, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799332, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_LocalScale.z
@@ -68,16 +72,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2082377675, guid: 6b943abdb5c7a5646acdc0867786967d, type: 3}
+    - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_Color.r
-      value: 0.16751647
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 73626782046799333, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 313512845
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799334, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: movementSpeed
