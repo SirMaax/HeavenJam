@@ -58,4 +58,6 @@ public class MadDog : MonoBehaviour
         direction = direction.normalized;
         direction *= speed * Time.deltaTime;
     }
+    
+    
 }

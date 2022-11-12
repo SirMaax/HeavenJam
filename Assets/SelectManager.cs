@@ -65,8 +65,11 @@ public class SelectManager : MonoBehaviour
 
     public void ClearSelection()
     {
+        if (currentSelected != null)
+        {
         currentSelected.DeSelect();
         currentSelected = null;
+        }
     }
 
 } 
