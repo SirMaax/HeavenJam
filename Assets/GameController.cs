@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,16 +17,20 @@ public class GameController : MonoBehaviour
     public static int amountOfEscapedSouls;
  
     public static int amountOfFallenSouls;
+
+    private float startTime;
+    public TMP_Text timer;
+    public float goneTime;
     // Start is called before the first frame update
     void Start()
     {
-        
+        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        TrackTime();
     }
 
     private void CheckIfGameIsOver()
@@ -47,5 +52,13 @@ public class GameController : MonoBehaviour
     public void TriggerNextLevel()
     {
         SceneManager.LoadScene(nextLevelName);
+    }
+
+    public void TrackTime()
+    {
+        //UPdate Time 
+        goneTime =- Time.time - startTime ;
+        int temp = (int)goneTime *-1;
+        timer.SetText( temp.ToString());
     }
 }

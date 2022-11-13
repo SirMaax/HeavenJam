@@ -10,6 +10,8 @@ public class MadDog : MonoBehaviour
     [SerializeField] private float speed;
     private Vector2 target;
     private Vector2 direction;
+    private Vector2 speedVector;
+    private Vector2 lastPos;
     void Start()
     {
         //SetInitalVector]
@@ -19,9 +21,12 @@ public class MadDog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speedVector =(Vector2) transform.position - lastPos;
+        lastPos = transform.position;
         Movement();
         //CHeck for wall
         ClampMovement();
+        FlipSprite();
     }
 
     private void ClampMovement()
@@ -40,7 +45,7 @@ public class MadDog : MonoBehaviour
     
     private void Movement()
     {
-        transform.Translate(direction);
+        transform.Translate(direction * Time.deltaTime);
     }
 
     private void SetNewTarget()
@@ -56,7 +61,24 @@ public class MadDog : MonoBehaviour
         target = medium;
         direction = target - (Vector2)transform.position;
         direction = direction.normalized;
-        direction *= speed * Time.deltaTime;
+        direction *= speed;
+    }
+    
+    private void FlipSprite()
+    {
+        if (speedVector.x < 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * -1;
+            transform.localScale = scale;
+        }
+        else
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+        
     }
     
     

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18f58ae2493e56c42b8ffc7586fa24f4
+guid: 532a8ec6e32659b4abc09f702b815e53
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Soul3_0
+      name: BigCloudAnimation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 96
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51db287c850dc7d40870ac058ea4fbfb
-      internalID: 1510583257
+      spriteID: e6ed498ac4f433f4899f5d23d1db8ed2
+      internalID: -1133600993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soul3_1
+      name: BigCloudAnimation_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 96
         y: 0
-        width: 16
-        height: 16
+        width: 96
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49a07f4de3d10cf4795520bc7e308024
-      internalID: 1347894726
+      spriteID: daa5388e257fa4c4cb4505c1239df3ea
+      internalID: -1911758155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soul3_2
+      name: BigCloudAnimation_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 192
         y: 0
-        width: 16
-        height: 16
+        width: 96
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72fbd0597eb12054f81dd16de85671f3
-      internalID: -1038899191
+      spriteID: a32d114d8de16844180bebcb16accef4
+      internalID: 1353331878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soul3_3
+      name: BigCloudAnimation_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 288
         y: 0
-        width: 16
-        height: 16
+        width: 96
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd193636091b0c8409cf41e41690ae44
-      internalID: -868165654
+      spriteID: f28ad4e66393d6d45b1db6e0f415865e
+      internalID: 1433339611
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Soul3_2: -1038899191
-      Soul3_0: 1510583257
-      Soul3_3: -868165654
-      Soul3_1: 1347894726
+      BigCloudAnimation_1: -1911758155
+      BigCloudAnimation_3: 1433339611
+      BigCloudAnimation_0: -1133600993
+      BigCloudAnimation_2: 1353331878
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

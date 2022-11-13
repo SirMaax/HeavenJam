@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18f58ae2493e56c42b8ffc7586fa24f4
+guid: 750f4c272b2035242ab242d0dd5aa464
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Soul3_0
+      name: MadDogIdle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,41 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51db287c850dc7d40870ac058ea4fbfb
-      internalID: 1510583257
+      spriteID: db4ffaeafdb3a9b478d81778c2c4211e
+      internalID: -994342823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Soul3_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49a07f4de3d10cf4795520bc7e308024
-      internalID: 1347894726
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soul3_2
+      name: MadDogIdle_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,29 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72fbd0597eb12054f81dd16de85671f3
-      internalID: -1038899191
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soul3_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd193636091b0c8409cf41e41690ae44
-      internalID: -868165654
+      spriteID: 331d9d9ebede3d943a80dd61a0d72f68
+      internalID: -1022527959
       vertices: []
       indices: 
       edges: []
@@ -210,10 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Soul3_2: -1038899191
-      Soul3_0: 1510583257
-      Soul3_3: -868165654
-      Soul3_1: 1347894726
+      MadDogIdle_1: -1022527959
+      MadDogIdle_0: -994342823
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
