@@ -186,7 +186,7 @@ public class CloudController : MonoBehaviour
     {
         if (allClouds)
         {
-            for (int i = 0; i < amountOfClouds; i++)
+            for (int i = 0; i < amountOfClouds/2; i++)
             {
                 Vector2 newPos = leftCloud[i].transform.position;
                 newPos.x = Random.Range(spawnPositionXLeft, spawnPositionXRight);

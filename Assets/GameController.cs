@@ -20,10 +20,13 @@ public class GameController : MonoBehaviour
 
     private float startTime;
     public TMP_Text timer;
+    public TMP_Text soulsSaved;
+
     public float goneTime;
     // Start is called before the first frame update
     void Start()
     {
+        amountSouls = GameObject.FindGameObjectsWithTag("Soul").Length;
         startTime = Time.time;
     }
 
@@ -31,6 +34,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         TrackTime();
+        UpdateSousl();
     }
 
     private void CheckIfGameIsOver()
@@ -60,5 +64,10 @@ public class GameController : MonoBehaviour
         goneTime =- Time.time - startTime ;
         int temp = (int)goneTime *-1;
         timer.SetText( temp.ToString());
+    }
+
+    private void UpdateSousl()
+    {
+        soulsSaved.SetText(amountOfEscapedSouls.ToString() + "/" + amountSouls.ToString());
     }
 }

@@ -226,7 +226,7 @@ public class SoulMovement : MonoBehaviour
     {
         Vector2 currentPos = transform.position;
         currentPos.x = Mathf.Clamp(currentPos.x, -MoveScript.XClampStatic + 2, MoveScript.XClampStatic - 2);
-        currentPos.y = Mathf.Clamp(currentPos.y, -MoveScript.YClampStatic + 2, MoveScript.YClampStatic - 2);
+        currentPos.y = Mathf.Clamp(currentPos.y, -MoveScript.YClampStatic, MoveScript.YClampStatic + 3);
         transform.position = new Vector3(currentPos.x, currentPos.y, 0);
 
     }
