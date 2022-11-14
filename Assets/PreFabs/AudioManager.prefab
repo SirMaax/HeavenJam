@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6444027200758040295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4211788167570497421}
+  - component: {fileID: 5378883153157669495}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4211788167570497421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444027200758040295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5378883153157669495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444027200758040295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e0ca64c30a9c2409738c0b1828ef56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAudio:
+  - {fileID: 4930062359721823203, guid: a6157cf6a5efbae43ab48372af4a7cb3, type: 3}
+  - {fileID: 6538308515152650895, guid: c45021752feecf3488a5e7d5199be452, type: 3}
+  - {fileID: 8093143909299451392, guid: bcaf08cfb2dd23342ad938aae033c7b8, type: 3}
+  - {fileID: 5542268453750351673, guid: a00eff67c17adf042a414deb1f70d27d, type: 3}
+  - {fileID: 7052660893593942176, guid: 6dc87c6689fa8f54a9404f97e8c5f2ea, type: 3}
+  - {fileID: 8830427540336688211, guid: 2882b54878332114d914066e31aa528c, type: 3}
+  - {fileID: 6760943936262563996, guid: b94fa890843c57f44befd6099708dbd9, type: 3}
+  - {fileID: 8320340141089597623, guid: e63b95b85cc02094883c3986f82abd25, type: 3}

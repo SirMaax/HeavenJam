@@ -233,7 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bf17b072263bc4f84b3ded27974b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 6.5
+  audioSourceIndex: 1
   distanceTillSnapToTarget: 0.1
   xClampValue: 40
   yClampValue: 22.5
@@ -259,7 +260,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
 --- !u!114 &73626782046799339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfDog: 0
-  dogRadius: 5
+  dogRadius: 7
   showRadius: 0
   soulMask:
     serializedVersion: 2

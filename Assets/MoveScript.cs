@@ -7,7 +7,9 @@ using UnityEngine;
 public class MoveScript : MonoBehaviour
 {
     [Header("Variabl")] [SerializeField] private float movementSpeed;
+    [SerializeField] private int audioSourceIndex;
     [SerializeField] private float distanceTillSnapToTarget;
+    
     [SerializeField] private float xClampValue;
     [SerializeField] private float yClampValue;
     public static float XClampStatic;
@@ -28,6 +30,7 @@ public class MoveScript : MonoBehaviour
     private Vector2 direction;
     private Vector2 lastPos;
     private UI_Manager _uiManager;
+    private AudioManager _audioManager;
     void Start()
     {
         targetPosition = new Queue<Vector2>();
@@ -41,11 +44,13 @@ public class MoveScript : MonoBehaviour
         YClampStatic = yClampValue;
         _animator = GetComponent<Animator>();
         _uiManager = GameObject.FindWithTag("UI_Manager").GetComponent<UI_Manager>();
+        _audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameController.roundOver) return;
         direction = (Vector2)transform.position - lastPos;
         lastPos = transform.position;
         FlipSprite();
@@ -76,6 +81,7 @@ public class MoveScript : MonoBehaviour
             selected = true;
             _selectManager.NewSelectedObject(this);
             _uiManager.TogglePortrait(activePortaitNumber);
+            _audioManager.PlaySound(audioSourceIndex);
         }
     }
 

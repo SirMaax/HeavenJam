@@ -104,8 +104,9 @@ MonoBehaviour:
   timeBetweenRandomMovementMin: 1
   timeBetweenRandomMovementMax: 3
   isInRangeForBarking: 0
-  movementSpeed: 1
-  maxSpeedMulitplier: 250
+  scaredTime: 1
+  movementSpeed: 1.5
+  maxSpeedMulitplier: 450
   xRandomMovement: 5
   yRandomMovement: 5
   percentageOfBaseMovementSpeedMultiplier: 10

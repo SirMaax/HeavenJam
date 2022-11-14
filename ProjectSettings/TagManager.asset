@@ -10,6 +10,7 @@ TagManager:
   - Dog
   - MadDog
   - UI_Manager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

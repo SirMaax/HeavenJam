@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2eff6554df2fb74faa8a4bed9ad823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  distanceTillDog: 5
+  extraSpeedWhenBlocked: 1.5
+  speed: 7
 --- !u!114 &6303455847163266479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfDog: 1
-  dogRadius: 6
+  dogRadius: 10
   showRadius: 0
   soulMask:
     serializedVersion: 2

@@ -6,16 +6,21 @@ using UnityEngine;
 public class MadDog : MonoBehaviour
 {
     // Start is called before the first frame update
-    [Header("Movement")] 
-    [SerializeField] private float speed;
+    [Header("Movement")] [SerializeField] private float distanceTillDog;
+    [SerializeField] private float extraSpeedWhenBlocked;
+     [SerializeField] private float speed;
     private Vector2 target;
     private Vector2 direction;
     private Vector2 speedVector;
     private Vector2 lastPos;
+    private DogManager _dogManager;
+    private bool blockedByDog;
     void Start()
     {
         //SetInitalVector]
         SetNewTarget();
+        _dogManager = GameObject.FindWithTag("DogManager").GetComponent<DogManager>();
+        
     }
 
     // Update is called once per frame
@@ -23,7 +28,9 @@ public class MadDog : MonoBehaviour
     {
         speedVector =(Vector2) transform.position - lastPos;
         lastPos = transform.position;
+        CheckIfMadDogIsInRange();
         Movement();
+        
         //CHeck for wall
         ClampMovement();
         FlipSprite();
@@ -39,13 +46,14 @@ public class MadDog : MonoBehaviour
         {
             //Reached edge
             SetNewTarget();
+            if (blockedByDog) blockedByDog = false;
         }
         transform.position = new Vector3(currentPos.x, currentPos.y, -1);
     }
     
     private void Movement()
-    {
-        transform.Translate(direction * Time.deltaTime);
+    { if (blockedByDog) transform.Translate(direction * Time.deltaTime *extraSpeedWhenBlocked);
+        else  transform.Translate(direction * Time.deltaTime);
     }
 
     private void SetNewTarget()
@@ -79,6 +87,26 @@ public class MadDog : MonoBehaviour
             transform.localScale = scale;
         }
         
+    }
+
+    private void CheckIfMadDogIsInRange()
+    {
+        if (blockedByDog) return;
+        DogScript[] allDogs = _dogManager.GetAllDogs();
+        foreach (var dog in allDogs )
+        {
+            if (dog.typeOfDog == 0)
+            {
+                float distance = ((Vector2)transform.position - dog.GetPosition()).magnitude;
+                if (distance < distanceTillDog)
+                {
+                    direction = (Vector2)transform.position - dog.GetPosition();
+                    //ReverseDirectionó
+                    
+                    blockedByDog = true;
+                }
+            }
+        }
     }
     
     

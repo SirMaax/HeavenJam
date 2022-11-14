@@ -65,7 +65,11 @@ PrefabInstance:
       objectReference: {fileID: -1397551726, guid: cee1a842ba6503743ae7b40c8a981a76, type: 3}
     - target: {fileID: 73626782046799334, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: movementSpeed
-      value: 7
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 73626782046799334, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
+      propertyPath: audioSourceIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799334, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: activePortaitNumber
@@ -73,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 73626782046799339, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
       propertyPath: dogRadius
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca70d927b7fbe3049951467fabe88d36, type: 3}
